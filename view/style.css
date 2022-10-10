@@ -1,0 +1,44 @@
+#container {
+  border: 1px solid;
+  width: 80%;
+  margin: 30px auto;
+  padding: 10px;
+  align-self: center;
+}
+#formTag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid;
+  border-radius: 10px;
+  margin: 10px;
+  background: #09ed2f;
+}
+#book_form_style {
+  border: 1px solid;
+  margin: 10px;
+  display: none;
+}
+.bookNameInput {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+  height: 20px;
+}
+#bookName_input {
+  border-radius: 4px;
+}
+.btn {
+  text-align: center;
+  margin: auto;
+  border-radius: 5px;
+}
+#Book_detail_Container {
+  border: 1px solid;
+  margin: 10x;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
