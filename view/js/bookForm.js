@@ -68,7 +68,7 @@ const bookForm = {
 
     const priceInput = document.createElement("input");
     priceInput.id = "price";
-    priceInput.type = "number"
+    priceInput.type = "number",
     priceTagAndInputContainer.appendChild(priceInput);
 
     const create_btn = document.createElement("button");
