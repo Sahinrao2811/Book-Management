@@ -23,4 +23,4 @@ const formData = () => {
 
 bookFormTag_Div.onclick = formData;
 
-bookContainer.appendChild(bookForm.getHtm());
+bookContainer.appendChild(bookForm.getHtml());
