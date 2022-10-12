@@ -3,6 +3,10 @@ const bookList = {
     const bookListContainer = document.createElement("div");
     bookListContainer.id = "bookList";
 
+    // const bookList = localStorage.getItem("bookData");
+    const bookList = JSON.parse(localStorage.getItem("bookData"));
+    console.log(bookList);
+
     const bookListHeaderContainer = document.createElement("div");
     bookListHeaderContainer.id = "bookListHeader";
     bookListContainer.appendChild(bookListHeaderContainer);
@@ -15,7 +19,7 @@ const bookList = {
     listBookIconContainer.appendChild(listIcon);
 
     const aboutBook = document.createElement("div");
-    const aboutBookName = document.createTextNode(" Book Name by Author Name");
+    const aboutBookName = document.createTextNode(` ${bookList[0].bookName} by ${bookList[0].authorName}`);
     aboutBook.appendChild(aboutBookName);
     bookListHeaderContainer.appendChild(aboutBook);
 
