@@ -1,6 +1,7 @@
+
 #container {
   border: 1px solid;
-  width: 80%;
+  width: 30%;
   margin: 30px auto;
   padding: 10px;
   align-self: center;
@@ -19,6 +20,12 @@
   margin: 10px;
   display: none;
 }
+#bookList{
+  border: 1px solid;
+  margin: 10px;
+  display: none;
+  /* background: #000;  */
+}
 .bookNameInput {
   display: flex;
   flex-direction: row;
@@ -32,8 +39,10 @@
 }
 .btn {
   text-align: center;
-  margin: auto;
+  margin: 0px auto;
   border-radius: 5px;
+  display: block;
+  margin-bottom: 10px;
 }
 #Book_detail_Container {
   border: 1px solid;
@@ -41,4 +50,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#bookListHeader{
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgb(241, 236, 236);
+}
+#bookListHeading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#listIcon{
+  position: relative;
+  justify-self: start;;
+  background: #000;
 }

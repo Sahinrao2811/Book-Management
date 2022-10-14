@@ -1,4 +1,5 @@
 import bookForm from "./bookForm.js";
+import bookList from "./bookList.js";
 
 const bookContainer = document.getElementById("container");
 const bookFormDiv = document.createElement("div");
@@ -24,3 +25,4 @@ const formData = () => {
 bookFormTag_Div.onclick = formData;
 
 bookContainer.appendChild(bookForm.getHtml());
+bookContainer.appendChild(bookList.getHtml());

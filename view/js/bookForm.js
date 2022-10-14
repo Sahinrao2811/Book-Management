@@ -54,7 +54,7 @@ const bookForm = {
 
     const publishDateInput = document.createElement("input");
     publishDateInput.id = "publishDate";
-    publishDateInput.type= "date"
+    publishDateInput.type = "date";
     publishDateTagAndInputContainer.appendChild(publishDateInput);
 
     const priceTagAndInputContainer = document.createElement("div");
@@ -68,34 +68,33 @@ const bookForm = {
 
     const priceInput = document.createElement("input");
     priceInput.id = "price";
-    priceInput.type = "number",
-    priceTagAndInputContainer.appendChild(priceInput);
+    (priceInput.type = "number"),
+      priceTagAndInputContainer.appendChild(priceInput);
 
     const create_btn = document.createElement("button");
     bookFormContainer.appendChild(create_btn);
     create_btn.className = "btn";
     const create_btn_Text = document.createTextNode("Create");
     create_btn.appendChild(create_btn_Text);
-    
-    console.log("bookName", bookName_input);
 
-    
-const saveToLocalStorage = () =>{
-
-  let inputBook = {
-    bookName: bookName_input.value,
-    bookDetail: bookDetailInput.value,
-    authorName: authorNameInput.value,
-    publishDate: publishDateInput.value,
-    price: priceInput.value,
-  };
-
-  let bookData = [];
-  bookData.push(inputBook);
-  localStorage.setItem("bookData", JSON.stringify(bookData));
-  
-}
-create_btn.onclick = saveToLocalStorage;
+    const saveToLocalStorage = () => {
+      let inputBook = {
+        bookName: bookName_input.value,
+        bookDetail: bookDetailInput.value,
+        authorName: authorNameInput.value,
+        publishDate: publishDateInput.value,
+        price: priceInput.value,
+      };
+      let bookData; 
+      if (localStorage.getItem("bookdata")){
+        bookData = JSON.parse(localStorage.getItem("bookdata"))
+      }else{
+        bookData = [];
+      }
+      bookData.push(inputBook);
+      localStorage.setItem("bookdata", JSON.stringify(bookData));
+    };
+    create_btn.onclick = saveToLocalStorage;
 
     return bookFormContainer;
   },
