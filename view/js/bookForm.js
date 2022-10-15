@@ -1,5 +1,9 @@
 const bookForm = {
   getHtml: function () {
+
+
+
+
     const bookFormContainer = document.createElement("div");
     bookFormContainer.id = "book_form_style";
 
@@ -79,6 +83,7 @@ const bookForm = {
 
     const saveToLocalStorage = () => {
       let inputBook = {
+        id : Math.floor(Math.random()*100),
         bookName: bookName_input.value,
         bookDetail: bookDetailInput.value,
         authorName: authorNameInput.value,
@@ -87,7 +92,7 @@ const bookForm = {
       };
       let bookData; 
       if (localStorage.getItem("bookdata")){
-        bookData = JSON.parse(localStorage.getItem("bookdata"))
+        bookData = JSON.parse(localStorage.getItem("bookdata") || "[]")
       }else{
         bookData = [];
       }

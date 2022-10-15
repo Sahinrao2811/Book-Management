@@ -71,3 +71,13 @@
   justify-self: start;;
   background: #000;
 }
+.description{
+  display: none;
+}
+#dlt{
+  width: 100%;
+  text-align: right;
+}
+.delet_btn{
+  color: red;
+}
