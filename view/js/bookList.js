@@ -76,8 +76,14 @@ const bookList = {
       bookName_tag_and_inputContainer.appendChild(bookName_tag);
   
       const bookName_input_Tag = document.createElement("input");
+      // bookName_input_Tag.readOnly = true
       bookName_input_Tag.value = `${item.bookName} `
-      bookName_input_Tag.disabled = true
+
+    
+
+      bookName_input_Tag.onblur = () => {
+        updateBook(item.id, "bookName", bookName_input_Tag.value  )
+      }
 
       bookName_tag_and_inputContainer.appendChild(bookName_input_Tag);
       desc.appendChild(bookName_tag_and_inputContainer);
@@ -92,10 +98,14 @@ const bookList = {
       bookDetail_tag_and_inputContainer.appendChild(bookDetail_tag);
   
       const bookDetailInput_Tag = document.createElement("input");
-        bookDetailInput_Tag.disabled = true
+        bookDetailInput_Tag.readOnly = true
       bookDetailInput_Tag.value = `${item?.bookDetail}`
       bookDetail_tag_and_inputContainer.appendChild(bookDetailInput_Tag);
-  
+
+
+      bookDetailInput_Tag.onblur = () => updateBook(item.id, "bookDetail", bookDetailInput_Tag.value) 
+
+
       const authorNameAndInputContainer = document.createElement("div");
       authorNameAndInputContainer.className = "bookNameInput";
   
@@ -105,11 +115,14 @@ const bookList = {
       authorNameAndInputContainer.appendChild(authorNameTag);
       desc.appendChild(authorNameAndInputContainer);
   
-      let authorNameInput_tag = document.createElement("input");
-      authorNameInput_tag.disabled = true
+      const authorNameInput_tag = document.createElement("input");
       authorNameInput_tag.value = `${item?.authorName}`
       authorNameAndInputContainer.appendChild(authorNameInput_tag);
-  
+      
+      authorNameInput_tag.onblur = () => updateBook( item.id, "authorName", authorNameInput_tag.value)
+
+
+
       const publishDateTagAndInputContainer = document.createElement("div");
       publishDateTagAndInputContainer.className = "bookNameInput";
       desc.appendChild(publishDateTagAndInputContainer);
@@ -120,10 +133,10 @@ const bookList = {
       publishDateTagAndInputContainer.appendChild(publishDateTag);
   
       const publishDateInput_tag = document.createElement("input");
-      publishDateInput_tag.disabled = true
       publishDateInput_tag.value =  `${item?.publishDate}`
-       
       publishDateTagAndInputContainer.appendChild(publishDateInput_tag);
+
+      publishDateInput_tag.onblur = () =>updateBook(item.id, "publishDate", authorNameInput_tag.value )
   
       const priceTagAndInputContainer = document.createElement("div");
       priceTagAndInputContainer.className = "bookNameInput";
@@ -135,9 +148,20 @@ const bookList = {
       priceTagAndInputContainer.appendChild(priceTag);
   
       const priceInput_tag = document.createElement("input");
-      priceInput_tag.disabled = true
       priceInput_tag.value = `${item?.price}`
       priceTagAndInputContainer.appendChild(priceInput_tag);
+
+      priceInput_tag.onblur = () =>updateBook(item.id, "price", priceInput_tag.value)
+
+
+      function updateBook (id, key, value){
+        const items = JSON.parse(localStorage.getItem("bookdata"));
+        const updateItem= items.find(item => item.id === id )
+        updateItem[key] = value
+        // console.log( "jklhgfdz", updateItem[key] = value);
+        localStorage.setItem("bookdata", JSON.stringify(items))
+
+      }
   
     }
     
