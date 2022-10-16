@@ -9,6 +9,7 @@ const bookFormTag_Div = document.createElement("div");
 bookFormTag_Div.id = "formTag";
 const bookForm_tag = document.createElement("p");
 const bookFormTag_Name = document.createTextNode("Insert Book Detail");
+
 bookForm_tag.appendChild(bookFormTag_Name);
 bookFormTag_Div.appendChild(bookForm_tag);
 bookFormDiv.appendChild(bookFormTag_Div);
@@ -25,4 +26,13 @@ const formData = () => {
 bookFormTag_Div.onclick = formData;
 
 bookContainer.appendChild(bookForm.getHtml());
-bookContainer.appendChild(bookList.getHtml());
+list()
+
+function list(){
+  if (bookContainer.lastChild.className === 'booklist'){
+    bookContainer.lastChild.innerHTML = ""
+  }
+  bookContainer.appendChild(bookList.getHtml());
+}
+
+export default list;

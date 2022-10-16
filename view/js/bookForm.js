@@ -1,11 +1,9 @@
+import list from "./home.js";
 const bookForm = {
   getHtml: function () {
-
-
-
-
     const bookFormContainer = document.createElement("div");
     bookFormContainer.id = "book_form_style";
+    bookFormContainer.style.display= "none";
 
     const bookName_tag_and_inputContainer = document.createElement("div");
     bookName_tag_and_inputContainer.className = "bookNameInput";
@@ -98,6 +96,10 @@ const bookForm = {
       }
       bookData.push(inputBook);
       localStorage.setItem("bookdata", JSON.stringify(bookData));
+      list();
+
+
+
     };
     create_btn.onclick = saveToLocalStorage;
 

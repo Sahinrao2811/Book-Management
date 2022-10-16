@@ -1,7 +1,11 @@
+import list from "./home.js";
+
 const bookList = {
   getHtml: function () {
     const mainBookLIstContainer = document.createElement("div");
     mainBookLIstContainer.className = "booklist"
+    mainBookLIstContainer.innerHTML = ""; 
+    
    
     const bookList = JSON.parse(localStorage.getItem("bookdata") || "[]");
   
@@ -16,6 +20,8 @@ const bookList = {
 
     const bookDes = document.createElement("div");
     bookDes.className= "description"
+    bookDes.style.display = "none"
+    
 
        const deleteBtnDiv = document.createElement("div");
        deleteBtnDiv.id = "dlt";
@@ -30,6 +36,7 @@ const bookList = {
       const newBookList = bookList.filter(item=>item.id!==bookList[i].id);
       console.log("new", newBookList);
       localStorage.setItem("bookdata", JSON.stringify(newBookList))
+      list();
     })
 
   
@@ -52,7 +59,7 @@ const bookList = {
 
     const bookListFun = (i) => {
       const btn = document.getElementsByClassName("description")[i];
-      console.log(btn);
+      console.log(btn.style.display);
       if (btn.style.display === "none") {
         btn.style.display = "block";
       } else {
@@ -158,7 +165,6 @@ const bookList = {
         const items = JSON.parse(localStorage.getItem("bookdata"));
         const updateItem= items.find(item => item.id === id )
         updateItem[key] = value
-        // console.log( "jklhgfdz", updateItem[key] = value);
         localStorage.setItem("bookdata", JSON.stringify(items))
 
       }
