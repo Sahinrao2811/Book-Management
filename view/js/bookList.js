@@ -1,7 +1,7 @@
 import list from "./home.js";
 
-const bookList = {
-  getHtml: function () {
+const bookLisT = {
+  getHtml () {
     const mainBookLIstContainer = document.createElement("div");
     mainBookLIstContainer.className = "booklist";
     mainBookLIstContainer.innerHTML = "";
@@ -10,7 +10,6 @@ const bookList = {
     for (let i = 0; i < bookList.length; i++) {
       const bookListContainer = document.createElement("div");
       bookListContainer.id = "book";
-
       const bookListHeaderContainer = document.createElement("div");
       bookListHeaderContainer.id = "bookListHeader";
 
@@ -21,7 +20,7 @@ const bookList = {
       deleteBtnDiv.id = "dlt";
 
       const deleteBtn = document.createElement("button");
-      deleteBtn.classList.add("delet_btn");
+      deleteBtn.classList.add("delete_btn");
       deleteBtn.innerText = "Delete";
       deleteBtnDiv.appendChild(deleteBtn);
       bookDes.appendChild(deleteBtnDiv);
@@ -61,59 +60,53 @@ const bookList = {
       bookListHeaderContainer.addEventListener("click", () => bookListFun(i));
     }
 
-    function descriptionFun(desc, item) {
-      const bookName_tag_and_inputContainer = document.createElement("div");
-      bookName_tag_and_inputContainer.className = "bookNameInput";
+    function descriptionFun (desc, item) {
+      const bookNameInput = document.createElement("div");
+      bookNameInput.className = "bookNameInput";
 
-      const bookName_tag = document.createElement("p");
-      const bookName_tag_name = document.createTextNode("Book Name");
-      bookName_tag.appendChild(bookName_tag_name);
-      desc.appendChild(bookName_tag);
-      bookName_tag_and_inputContainer.appendChild(bookName_tag);
+      const bookNameTag = document.createElement("p");
+      bookNameTag.innerText = "Book Name";
+      desc.appendChild(bookNameTag);
+      bookNameInput.appendChild(bookNameTag);
+      const bookNameInputTag = document.createElement("p");
+      bookNameInputTag.innerText = `${item.bookName}`;
+      bookNameInputTag.contentEditable = false;
 
-      const bookName_input_Tag = document.createElement("p");
-      const bookName_input_Tag_value = document.createTextNode(
-        `${item.bookName} `
-      );
-      bookName_input_Tag.appendChild(bookName_input_Tag_value);
-      bookName_input_Tag.contentEditable = false;
-
-      bookName_input_Tag.addEventListener("dblclick", () => {
-        bookName_input_Tag.contentEditable = true;
-        bookName_input_Tag.focus();
+      bookNameInputTag.addEventListener("dblclick", () => {
+        bookNameInputTag.contentEditable = true;
+        bookNameInputTag.focus();
       });
 
-      bookName_input_Tag.onblur = () => {
-        console.log(bookName_input_Tag.innerText);
-        updateBook(item.id, "bookName", bookName_input_Tag.innerText);
+      bookNameInputTag.onblur = () => {
+        console.log(bookNameInputTag.innerText);
+        updateBook(item.id, "bookName", bookNameInputTag.innerText);
       };
 
-      bookName_tag_and_inputContainer.appendChild(bookName_input_Tag);
-      desc.appendChild(bookName_tag_and_inputContainer);
+      bookNameInput.appendChild(bookNameInputTag);
+      desc.appendChild(bookNameInput);
 
-      const bookDetail_tag_and_inputContainer = document.createElement("div");
-      desc.appendChild(bookDetail_tag_and_inputContainer);
-      bookDetail_tag_and_inputContainer.className = "bookNameInput";
+      const bookDetailTagAndInputContainer = document.createElement("div");
+      desc.appendChild(bookDetailTagAndInputContainer);
+      bookDetailTagAndInputContainer.className = "bookNameInput";
 
-      const bookDetail_tag = document.createElement("p");
-      const bookDetail_tag_Name = document.createTextNode("Book Detail");
-      bookDetail_tag.appendChild(bookDetail_tag_Name);
-      bookDetail_tag_and_inputContainer.appendChild(bookDetail_tag);
+      const bookDetailTag = document.createElement("p");
+      bookDetailTag.innerText = "Book Detail";
+      bookDetailTagAndInputContainer.appendChild(bookDetailTag);
 
-      const bookDetailInput_Tag = document.createElement("p");
-      const bookDetailInput_Tag_value = document.createTextNode(
-        `${item?.bookDetail}`
+      const bookDetailInputTag = document.createElement("p");
+      const bookDetailInputTagValue = document.createTextNode(
+        `${item.bookDetail}`
       );
-      bookDetailInput_Tag.appendChild(bookDetailInput_Tag_value);
-      bookDetail_tag_and_inputContainer.appendChild(bookDetailInput_Tag);
+      bookDetailInputTag.appendChild(bookDetailInputTagValue);
+      bookDetailTagAndInputContainer.appendChild(bookDetailInputTag);
 
-      bookDetailInput_Tag.addEventListener("dblclick", () => {
-        bookDetailInput_Tag.contentEditable = true;
-        bookDetailInput_Tag.focus();
+      bookDetailInputTag.addEventListener("dblclick", () => {
+        bookDetailInputTag.contentEditable = true;
+        bookDetailInputTag.focus();
       });
 
-      bookDetailInput_Tag.onblur = () =>
-        updateBook(item.id, "bookDetail", bookDetailInput_Tag.innerText);
+      bookDetailInputTag.onblur = () =>
+        updateBook(item.id, "bookDetail", bookDetailInputTag.innerText);
 
       const authorNameAndInputContainer = document.createElement("div");
       authorNameAndInputContainer.className = "bookNameInput";
@@ -124,20 +117,20 @@ const bookList = {
       authorNameAndInputContainer.appendChild(authorNameTag);
       desc.appendChild(authorNameAndInputContainer);
 
-      const authorNameInput_tag = document.createElement("p");
-      const authorNameInput_tag_value = document.createTextNode(
-        `${item?.authorName}`
+      const authorNameInputTag = document.createElement("p");
+      const authorNameInputTagValue = document.createTextNode(
+        `${item.authorName}`
       );
-      authorNameInput_tag.appendChild(authorNameInput_tag_value);
-      authorNameAndInputContainer.appendChild(authorNameInput_tag);
+      authorNameInputTag.appendChild(authorNameInputTagValue);
+      authorNameAndInputContainer.appendChild(authorNameInputTag);
 
-      authorNameInput_tag.addEventListener("dblclick", () => {
-        authorNameInput_tag.contentEditable = true;
-        authorNameInput_tag.focus();
+      authorNameInputTag.addEventListener("dblclick", () => {
+        authorNameInputTag.contentEditable = true;
+        authorNameInputTag.focus();
       });
 
-      authorNameInput_tag.onblur = () =>
-        updateBook(item.id, "authorName", authorNameInput_tag.innerText);
+      authorNameInputTag.onblur = () =>
+        updateBook(item.id, "authorName", authorNameInputTag.innerText);
 
       const publishDateTagAndInputContainer = document.createElement("div");
       publishDateTagAndInputContainer.className = "bookNameInput";
@@ -148,19 +141,19 @@ const bookList = {
       publishDateTag.appendChild(publishDateTagName);
       publishDateTagAndInputContainer.appendChild(publishDateTag);
 
-      const publishDateInput_tag = document.createElement("p");
-      const publishDateInput_tag_value = document.createTextNode(
-        `${item?.publishDate}`
+      const publishDateInputTag = document.createElement("p");
+      const publishDateInputTagValue = document.createTextNode(
+        `${item.publishDate}`
       );
-      publishDateInput_tag.appendChild(publishDateInput_tag_value);
-      publishDateTagAndInputContainer.appendChild(publishDateInput_tag);
-      publishDateInput_tag.addEventListener("dblclick", () => {
-        publishDateInput_tag.contentEditable = true;
-        publishDateInput_tag.focus();
+      publishDateInputTag.appendChild(publishDateInputTagValue);
+      publishDateTagAndInputContainer.appendChild(publishDateInputTag);
+      publishDateInputTag.addEventListener("dblclick", () => {
+        publishDateInputTag.contentEditable = true;
+        publishDateInputTag.focus();
       });
 
-      publishDateInput_tag.onblur = () =>
-        updateBook(item.id, "publishDate", authorNameInput_tag.innerText);
+      publishDateInputTag.onblur = () =>
+        updateBook(item.id, "publishDate", authorNameInputTag.innerText);
 
       const priceTagAndInputContainer = document.createElement("div");
       priceTagAndInputContainer.className = "bookNameInput";
@@ -171,19 +164,19 @@ const bookList = {
       priceTag.appendChild(priceTagName);
       priceTagAndInputContainer.appendChild(priceTag);
 
-      const priceInput_tag = document.createElement("p");
-      const priceInput_tag_value = document.createTextNode(`${item?.price}`);
-      priceInput_tag.appendChild(priceInput_tag_value);
-      priceTagAndInputContainer.appendChild(priceInput_tag);
-      priceInput_tag.addEventListener("dblclick", () => {
-        priceInput_tag.contentEditable = true;
-        priceInput_tag.focus();
+      const priceInputTag = document.createElement("p");
+      const priceInputTagValue = document.createTextNode(`${item.price}`);
+      priceInputTag.appendChild(priceInputTagValue);
+      priceTagAndInputContainer.appendChild(priceInputTag);
+      priceInputTag.addEventListener("dblclick", () => {
+        priceInputTag.contentEditable = true;
+        priceInputTag.focus();
       });
 
-      priceInput_tag.onblur = () =>
-        updateBook(item.id, "price", priceInput_tag.innerText);
+      priceInputTag.onblur = () =>
+        updateBook(item.id, "price", priceInputTag.innerText);
 
-      function updateBook(id, key, value) {
+      function updateBook (id, key, value) {
         const items = JSON.parse(localStorage.getItem("bookdata"));
         const updateItem = items.find((item) => item.id === id);
         updateItem[key] = value;
@@ -192,6 +185,6 @@ const bookList = {
     }
 
     return mainBookLIstContainer;
-  },
+  }
 };
-export default bookList;
+export default bookLisT;

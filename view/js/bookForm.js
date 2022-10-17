@@ -3,34 +3,34 @@ const bookForm = {
   getHtml: function () {
     const bookFormContainer = document.createElement("div");
     bookFormContainer.id = "book_form_style";
-    bookFormContainer.style.display= "none";
+    bookFormContainer.style.display = "none";
 
-    const bookName_tag_and_inputContainer = document.createElement("div");
-    bookName_tag_and_inputContainer.className = "bookNameInput";
+    const bookNameTagAndInputContainer = document.createElement("div");
+    bookNameTagAndInputContainer.className = "bookNameInput";
 
-    const bookName_tag = document.createElement("p");
-    const bookName_tag_name = document.createTextNode("Book Name");
-    bookName_tag.appendChild(bookName_tag_name);
-    bookFormContainer.appendChild(bookName_tag);
-    bookName_tag_and_inputContainer.appendChild(bookName_tag);
+    const bookNameTag = document.createElement("p");
+    bookNameTag.innerText = "Book Name";
+    bookFormContainer.appendChild(bookNameTag);
+    bookNameTagAndInputContainer.appendChild(bookNameTag);
 
-    const bookName_input = document.createElement("input");
-    bookName_input.id = "bookName";
-    bookName_tag_and_inputContainer.appendChild(bookName_input);
-    bookFormContainer.appendChild(bookName_tag_and_inputContainer);
+    const bookNameInput = document.createElement("input");
+    bookNameInput.id = "bookName";
+    bookNameInput.required = true;
+    bookNameTagAndInputContainer.appendChild(bookNameInput);
+    bookFormContainer.appendChild(bookNameTagAndInputContainer);
 
-    const bookDetail_tag_and_inputContainer = document.createElement("div");
-    bookFormContainer.appendChild(bookDetail_tag_and_inputContainer);
-    bookDetail_tag_and_inputContainer.className = "bookNameInput";
+    const bookDetailTagAndInputContainer = document.createElement("div");
+    bookFormContainer.appendChild(bookDetailTagAndInputContainer);
+    bookDetailTagAndInputContainer.className = "bookNameInput";
 
-    const bookDetail_tag = document.createElement("p");
-    const bookDetail_tag_Name = document.createTextNode("Book Detail");
-    bookDetail_tag.appendChild(bookDetail_tag_Name);
-    bookDetail_tag_and_inputContainer.appendChild(bookDetail_tag);
+    const bookDetailTag = document.createElement("p");
+    const bookDetailTagName = document.createTextNode("Book Detail");
+    bookDetailTag.appendChild(bookDetailTagName);
+    bookDetailTagAndInputContainer.appendChild(bookDetailTag);
 
     const bookDetailInput = document.createElement("input");
     bookDetailInput.id = "bookDetail";
-    bookDetail_tag_and_inputContainer.appendChild(bookDetailInput);
+    bookDetailTagAndInputContainer.appendChild(bookDetailInput);
 
     const authorNameAndInputContainer = document.createElement("div");
     authorNameAndInputContainer.className = "bookNameInput";
@@ -70,41 +70,53 @@ const bookForm = {
 
     const priceInput = document.createElement("input");
     priceInput.id = "price";
-    (priceInput.type = "number"),
-      priceTagAndInputContainer.appendChild(priceInput);
+    priceInput.type = "number";
+    priceTagAndInputContainer.appendChild(priceInput);
 
-    const create_btn = document.createElement("button");
-    bookFormContainer.appendChild(create_btn);
-    create_btn.className = "btn";
-    const create_btn_Text = document.createTextNode("Create");
-    create_btn.appendChild(create_btn_Text);
+    const createBtn = document.createElement("button");
+    bookFormContainer.appendChild(createBtn);
+    createBtn.className = "btn";
+    const createBtnText = document.createTextNode("Create");
+    createBtn.appendChild(createBtnText);
+
+    const isValid = () => {
+      if (
+        bookNameInput.value === "" ||
+        bookDetailInput.value === "" ||
+        authorNameInput.value === ""
+      ) {
+        alert(" Please enter the required field");
+        return true;
+      }
+    };
 
     const saveToLocalStorage = () => {
-      let inputBook = {
-        id : Math.floor(Math.random()*100),
-        bookName: bookName_input.value,
+      // isValid();
+      if (isValid()) {
+        return;
+      }
+      const inputBook = {
+        id: Math.floor(Math.random() * 100),
+        bookName: bookNameInput.value,
         bookDetail: bookDetailInput.value,
         authorName: authorNameInput.value,
         publishDate: publishDateInput.value,
-        price: priceInput.value,
+        price: priceInput.value
       };
-      let bookData; 
-      if (localStorage.getItem("bookdata")){
-        bookData = JSON.parse(localStorage.getItem("bookdata") || "[]")
-      }else{
+      let bookData;
+      if (localStorage.getItem("bookdata")) {
+        bookData = JSON.parse(localStorage.getItem("bookdata") || "[]");
+      } else {
         bookData = [];
       }
       bookData.push(inputBook);
       localStorage.setItem("bookdata", JSON.stringify(bookData));
       list();
-
-
-
     };
-    create_btn.onclick = saveToLocalStorage;
+    createBtn.onclick = saveToLocalStorage;
 
     return bookFormContainer;
-  },
+  }
 };
 
 export default bookForm;

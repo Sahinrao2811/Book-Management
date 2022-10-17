@@ -5,14 +5,14 @@ const bookContainer = document.getElementById("container");
 const bookFormDiv = document.createElement("div");
 bookContainer.appendChild(bookFormDiv);
 
-const bookFormTag_Div = document.createElement("div");
-bookFormTag_Div.id = "formTag";
-const bookForm_tag = document.createElement("p");
-const bookFormTag_Name = document.createTextNode("Insert Book Detail");
+const bookFormTagDiv = document.createElement("div");
+bookFormTagDiv.id = "formTag";
+const bookFormTag = document.createElement("p");
+const bookFormTagName = document.createTextNode("Insert Book Detail");
 
-bookForm_tag.appendChild(bookFormTag_Name);
-bookFormTag_Div.appendChild(bookForm_tag);
-bookFormDiv.appendChild(bookFormTag_Div);
+bookFormTag.appendChild(bookFormTagName);
+bookFormTagDiv.appendChild(bookFormTag);
+bookFormDiv.appendChild(bookFormTagDiv);
 
 const formData = () => {
   const btn = document.getElementById("book_form_style");
@@ -23,14 +23,14 @@ const formData = () => {
   }
 };
 
-bookFormTag_Div.onclick = formData;
+bookFormTagDiv.onclick = formData;
 
 bookContainer.appendChild(bookForm.getHtml());
-list()
+list();
 
-function list(){
-  if (bookContainer.lastChild.className === 'booklist'){
-    bookContainer.lastChild.innerHTML = ""
+function list () {
+  if (bookContainer.lastChild.className === "booklist") {
+    bookContainer.lastChild.innerHTML = "";
   }
   bookContainer.appendChild(bookList.getHtml());
 }

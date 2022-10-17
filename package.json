@@ -1,7 +1,7 @@
 {
   "name": "book-management",
   "version": "1.0.0",
-  "description": "",
+  "description": "First, clone the repo",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,7 +19,8 @@
   "homepage": "https://github.com/Sahinrao2811/Book-Management#readme",
   "devDependencies": {
     "eslint": "^8.25.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0"
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0"
   }
 }
