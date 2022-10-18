@@ -1,4 +1,6 @@
-
+p{
+  margin: 0;
+}
 #container {
   border: 1px solid;
   width: 30%;
@@ -14,6 +16,7 @@
   border-radius: 10px;
   margin: 10px;
   background: #09ed2f;
+  padding-block: 1rem;
   /* display: none; */
 }
 #book_form_style {
@@ -32,7 +35,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 20px;
+  margin: 20px 20px 0 20px;
   height: 20px;
 }
 #bookName_input {
@@ -79,6 +82,14 @@
   width: 100%;
   text-align: right;
 }
-.delet_btn{
+.delete_btn{
   color: red;
+}
+.error{
+  text-align: right;
+  padding-right: 20px;
+  display: none;
+}
+.errorInfo{
+ color: red; 
 }

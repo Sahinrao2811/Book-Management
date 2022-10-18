@@ -5,19 +5,29 @@ const bookForm = {
     bookFormContainer.id = "book_form_style";
     bookFormContainer.style.display = "none";
 
+    const mainBookNameTagAndInputContainer = document.createElement("div");
+
     const bookNameTagAndInputContainer = document.createElement("div");
     bookNameTagAndInputContainer.className = "bookNameInput";
 
     const bookNameTag = document.createElement("p");
-    bookNameTag.innerText = "Book Name";
+    bookNameTag.innerText = "Book Name *";
     bookFormContainer.appendChild(bookNameTag);
     bookNameTagAndInputContainer.appendChild(bookNameTag);
 
     const bookNameInput = document.createElement("input");
     bookNameInput.id = "bookName";
-    bookNameInput.required = true;
     bookNameTagAndInputContainer.appendChild(bookNameInput);
-    bookFormContainer.appendChild(bookNameTagAndInputContainer);
+    mainBookNameTagAndInputContainer.appendChild(bookNameTagAndInputContainer);
+    const bookNameErrorContainer = document.createElement("div");
+    bookNameErrorContainer.className = "error";
+    const bookNameErrorTag = document.createElement("p");
+    bookNameErrorTag.className = "errorInfo";
+    bookNameErrorTag.innerText = " Please enter Book Name";
+
+    bookNameErrorContainer.appendChild(bookNameErrorTag);
+    mainBookNameTagAndInputContainer.appendChild(bookNameErrorContainer);
+    bookFormContainer.appendChild(mainBookNameTagAndInputContainer);
 
     const bookDetailTagAndInputContainer = document.createElement("div");
     bookFormContainer.appendChild(bookDetailTagAndInputContainer);
@@ -32,28 +42,45 @@ const bookForm = {
     bookDetailInput.id = "bookDetail";
     bookDetailTagAndInputContainer.appendChild(bookDetailInput);
 
+    const mainAuthorNameAndInputContainer = document.createElement("div");
     const authorNameAndInputContainer = document.createElement("div");
     authorNameAndInputContainer.className = "bookNameInput";
 
     const authorNameTag = document.createElement("p");
-    const authorNameTagName = document.createTextNode("Author Name");
+    const authorNameTagName = document.createTextNode("Author Name *");
     authorNameTag.appendChild(authorNameTagName);
     authorNameAndInputContainer.appendChild(authorNameTag);
-    bookFormContainer.appendChild(authorNameAndInputContainer);
+    mainAuthorNameAndInputContainer.appendChild(authorNameAndInputContainer);
+    bookFormContainer.appendChild(mainAuthorNameAndInputContainer);
 
+    const authorNameErrorContainer = document.createElement("div");
+    authorNameErrorContainer.className = "error";
+    const authorNameErrorTag = document.createElement("p");
+    authorNameErrorTag.innerText = "Please enter author name";
+    authorNameErrorContainer.appendChild(authorNameErrorTag);
+    mainAuthorNameAndInputContainer.appendChild(authorNameErrorContainer);
+    authorNameErrorTag.className = "errorInfo";
     const authorNameInput = document.createElement("input");
     authorNameInput.id = "authorName";
     authorNameAndInputContainer.appendChild(authorNameInput);
 
+    const mainPublishDateTagAndInputContainer = document.createElement("div");
     const publishDateTagAndInputContainer = document.createElement("div");
     publishDateTagAndInputContainer.className = "bookNameInput";
-    bookFormContainer.appendChild(publishDateTagAndInputContainer);
+    mainPublishDateTagAndInputContainer.appendChild(publishDateTagAndInputContainer);
+    bookFormContainer.appendChild(mainPublishDateTagAndInputContainer);
 
     const publishDateTag = document.createElement("p");
     const publishDateTagName = document.createTextNode("Publish Date");
     publishDateTag.appendChild(publishDateTagName);
     publishDateTagAndInputContainer.appendChild(publishDateTag);
-
+    const publishDateErrorContainer = document.createElement("div");
+    publishDateErrorContainer.className = "error";
+    const publishDateErrorTag = document.createElement("p");
+    publishDateErrorTag.className = "errorInfo";
+    publishDateErrorTag.innerText = "Please enter the publish date";
+    publishDateErrorContainer.appendChild(publishDateErrorTag);
+    mainPublishDateTagAndInputContainer.appendChild(publishDateErrorContainer);
     const publishDateInput = document.createElement("input");
     publishDateInput.id = "publishDate";
     publishDateInput.type = "date";
@@ -80,18 +107,21 @@ const bookForm = {
     createBtn.appendChild(createBtnText);
 
     const isValid = () => {
-      if (
-        bookNameInput.value === "" ||
-        bookDetailInput.value === "" ||
-        authorNameInput.value === ""
-      ) {
-        alert(" Please enter the required field");
+      if (bookNameInput.value === "") {
+        bookNameErrorContainer.style.display = "block";
+        return true;
+      };
+      if (authorNameInput.value === "") {
+        authorNameErrorContainer.style.display = "block";
+        return true;
+      }
+      if (publishDateInput.value === "") {
+        publishDateErrorContainer.style.display = "block";
         return true;
       }
     };
 
     const saveToLocalStorage = () => {
-      // isValid();
       if (isValid()) {
         return;
       }
