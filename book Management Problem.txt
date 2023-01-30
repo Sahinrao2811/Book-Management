@@ -1,9 +1,9 @@
-1 : get div in which the parragraph is ,
+1 : get div in which the paragraph is ,
 after that get the text feild
 
  
-2 : remove the child onclick of the main div and the value of the textfield assign in the input text feild
-3 : append the input inwhich I remove the container 
+2 : remove the child onClick of the main div and the value of the textfield assign in the input text feild
+3 : append the input in which I remove the container 
 
 
 

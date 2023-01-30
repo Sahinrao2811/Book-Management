@@ -1,6 +1,7 @@
 {
   "name": "book-management",
   "version": "1.0.0",
+  "homepage": "https://sachinrao-dev.github.io",
   "description": "First, clone the repo",
   "main": "index.js",
   "scripts": {
@@ -22,5 +23,10 @@
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0"
+  },
+  "dependencies": {
+    "-": "^0.0.1",
+    "gh-pages": "^5.0.0",
+    "save-dev": "^0.0.1-security"
   }
 }
